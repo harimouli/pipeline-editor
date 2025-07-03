@@ -1,7 +1,3 @@
-Here's the **complete and polished README** for your project, including your nickname `MouliTheMachine`, your email, and all the essential details:
-
----
-
 # 🧠 Pipeline Editor
 
 A **visual DAG (Directed Acyclic Graph) editor** built using **React**, **TypeScript**, and **React Flow**. Create and manage complex workflows with intuitive drag-and-drop functionality.
