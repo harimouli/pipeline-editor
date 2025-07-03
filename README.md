@@ -1,4 +1,4 @@
-# 🧠 Pipeline Editor
+# Pipeline Editor
 
 A **visual DAG (Directed Acyclic Graph) editor** built using **React**, **TypeScript**, and **React Flow**. Create and manage complex workflows with intuitive drag-and-drop functionality.
 
@@ -20,13 +20,6 @@ A **visual DAG (Directed Acyclic Graph) editor** built using **React**, **TypeSc
 
 ---
 
-## 📸 Preview
-
-> *(Add your screenshot here or remove this section)*
-> Example:
-> ![Screenshot](https://your-screenshot-link.com)
-
----
 
 ## 🛠️ Tech Stack
 
