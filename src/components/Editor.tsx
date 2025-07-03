@@ -20,6 +20,8 @@ import { validateDAG} from '../utills/dagValidation';
 import { getLayoutedElements } from '../utills/autoLayout';
 import { type ValidationResult } from '../types';
 import { initialNodes , initialEdges} from '../utills/nodesData';
+import { StatsView } from './StatsView';
+import { About } from './About';
 
 const nodeTypes = {
   custom: CustomNode,
@@ -39,6 +41,7 @@ export const  Editor = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState<NodeData>(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [nodeCounter, setNodeCounter] = useState(6);
+  const [isOpen, setToggleHelp] = useState(false)
   
   const [validation, setValidation] = useState<ValidationResult>({ isValid: false, errors: [], status: 'empty' });
   const { fitView } = useReactFlow();
@@ -196,7 +199,7 @@ export const  Editor = () => {
  
 
   return (
-  <div className="flex items-center h-screen w-screen bg-black p-2 gap-2 overflow-hidden">
+  <div className="flex items-center h-screen w-screen bg-black p-2 gap-3 overflow-hidden">
     
     
     <div className="w-[70%] h-full bg-black border shadow-lg rounded-lg border-slate-200 overflow-hidden">
@@ -264,45 +267,21 @@ export const  Editor = () => {
     </div>
 
    
-    <div className="w-[30%] h-full flex flex-col items-center justify-between  gap-4">
-      
-      
-      <div className="w-full border-1 p-5 border-slate-200 rounded-lg">
-        <Toolbar
-          onAddNode={addNode}
-          onAutoLayout={handleAutoLayout}
-          onClearAll={handleClearAll}
-          disabled={false}
-        />
-      </div>
-     <div className = "border-1 p-5 border-slate-200 rounded-lg">
-      <div className="w-full flex flex-wrap gap-4 justify-evenly">
-        <div className="bg-white rounded-lg text-center shadow-md px-4 py-2 w-24">
-          <p className="text-xl font-bold text-blue-600">{nodes.length}</p>
-          <p className="text-sm text-gray-600">Nodes</p>
-        </div>
+     <div className="w-[30%] h-full flex flex-col items-center   gap-2">
+              <About isOpen = {isOpen} setToggleHelp = {setToggleHelp}/>            
+               {!isOpen &&  <Toolbar
+                  onAddNode={addNode}
+                  onAutoLayout={handleAutoLayout}
+                  onClearAll={handleClearAll}
+                  disabled={false}
+                />}
+              
+              {!isOpen && <StatsView 
+                nodes = {nodes} 
+                edges = {edges}  
+                validation = {validation}/>}
 
-        <div className="bg-white rounded-lg text-center shadow-md px-4 py-2 w-24">
-          <p className="text-xl font-bold text-green-600">{edges.length}</p>
-          <p className="text-sm text-gray-600">Edges</p>
-        </div>
-
-        <div className="bg-white rounded-lg text-center shadow-md px-4 py-2 w-24">
-          <p className="text-xl font-bold text-purple-600">
-            {nodes.filter(n => n.selected).length + edges.filter(e => e.selected).length}
-          </p>
-          <p className="text-sm text-gray-600">Selected</p>
-        </div>
-
-        <div className="bg-white rounded-lg text-center shadow-md px-4 py-2 w-24">
-          <p className={`text-xl font-bold ${validation.isValid ? 'text-green-600' : 'text-red-600'}`}>
-            {validation.isValid ? 'Yes' : 'No'}
-          </p>
-          <p className="text-sm text-gray-600">Valid</p>
-        </div>
-      </div>
-      </div>
-    </div>
+         </div> 
   </div>
 );
 

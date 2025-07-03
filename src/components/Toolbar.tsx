@@ -11,7 +11,7 @@ export interface ToolbarProps {
 
  const Toolbar:  React.FC<ToolbarProps> =  ({ onAddNode, onAutoLayout, onClearAll, disabled }: ToolbarProps) => {
   return (
-    
+      <div className="w-full border-1 p-5 border-slate-200 rounded-lg">
       <div className="flex flex-wrap gap-2 p-4 items-center">
         <div className="flex flex-wrap gap-2 items-center">
           {NodeTypeButtons.map(({ type, icon: Icon, label }) => (
@@ -20,7 +20,7 @@ export interface ToolbarProps {
               onClick={() => onAddNode(type)}
               disabled={disabled}
               className={`
-                px-2 py-1  bg-slate-200 rounded-md text-black font-medium text-sm flex items-center gap-2 transition-all
+                px-2 py-1  bg-slate-200 rounded-md text-black font-medium text-sm flex items-center gap-2 transition-all cursor-pointer
                 ${disabled ? 'cursor-not-allowed bg-slate-200' : ""}
               `}
               title={`Add ${label} Node`}
@@ -37,7 +37,7 @@ export interface ToolbarProps {
         <button
           onClick={onAutoLayout}
           disabled={disabled}
-          className={`
+          className={`cursor-pointer 
             px-2 py-1 rounded-md font-medium  text-sm flex items-center gap-2 transition-all
             ${disabled 
               ? 'bg-gray-400 text-white cursor-not-allowed' 
@@ -66,6 +66,7 @@ export interface ToolbarProps {
           <span className="hidden sm:inline">Clear</span>
         </button>
       </div>
+    </div>
 
   );
 };
