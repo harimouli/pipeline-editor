@@ -14,12 +14,13 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import type {  NodeData } from '../types';  
 import CustomNode from '../components/CustomNode';
-import {Toolbar} from '../components/Toolbar';
+import Toolbar from './Toolbar';
 import  { createNode, NodeTypes, type ConnectParams } from '../types';
 import { validateDAG} from '../utills/dagValidation';
 import { getLayoutedElements } from '../utills/autoLayout';
 import { type ValidationResult } from '../types';
 import { initialNodes , initialEdges} from '../utills/nodesData';
+
 const nodeTypes = {
   custom: CustomNode,
 };
@@ -195,12 +196,12 @@ export const  Editor = () => {
  
 
   return (
-        <div className="flex flex-col bg-black h-screen">
-          <div className = "flex">
+        <div className="flex flex-col bg-black h-screen w-screen p-4 overflow-x-hidden">
+          <div className = "flex items-center h-screen ">
 
 
           
-            <div className="h-[500px] w-[800px] bg-black rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+            <div className="h-full   w-[800px] bg-black border-1 shadow-lg rounded-lg border-slate-200 overflow-hidden">
               <ReactFlow
                 nodes={nodes}
                 edges={edges}
@@ -263,18 +264,18 @@ export const  Editor = () => {
                 )}
               </ReactFlow>
             </div>
-               <div className = "flex flex-col items-center" >
-                          <Toolbar
-                    onAddNode={addNode}
+               <div className = "flex flex-col items-center w-[200px]" >
+                 <Toolbar
+                 onAddNode = {addNode}
                     onAutoLayout={handleAutoLayout}
                     onClearAll={handleClearAll}
                     disabled={false}
                   />
 
               <div className="flex items-center gap-2">
-              <div className="bg-white rounded-lg p-4 text-center shadow-md w-4">
-                <div className="text-xl font-bold text-blue-600">{nodes.length}</div>
-                <div className="text-sm text-gray-600">Nodes</div>
+              <div className="bg-white rounded-lg p-4 text-center shadow-md w-2">
+                <p className="text-xl font-bold text-blue-600">{nodes.length}</p>
+                <p className="text-sm text-gray-600">Nodes</p>
               </div>
               <div className="bg-white rounded-lg p-4 text-center shadow-md">
                 <div className="text-xl font-bold text-green-600">{edges.length}</div>

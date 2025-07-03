@@ -14,7 +14,7 @@ export const NodeTypeButtons: NodeTypeButton[] = [
   { type: NodeTypes.OUTPUT, icon: Download, label: 'Output' }
 ];
 export interface ToolbarProps {
-  onAddNode: (type: NodeType) => void;
+  onAddNode: (type: string) => void;
   onAutoLayout: () => void;
   onClearAll: () => void;
   disabled: boolean;
