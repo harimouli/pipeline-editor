@@ -12,8 +12,8 @@ export interface ToolbarProps {
  const Toolbar:  React.FC<ToolbarProps> =  ({ onAddNode, onAutoLayout, onClearAll, disabled }: ToolbarProps) => {
   return (
     
-      <div className="flex flex-wrap gap-2 p-6 items-center">
-        <div className="flex gap-2 items-center">
+      <div className="flex flex-wrap gap-2 p-4 items-center">
+        <div className="flex flex-wrap gap-2 items-center">
           {NodeTypeButtons.map(({ type, icon: Icon, label }) => (
             <button
               key={type}
