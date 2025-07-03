@@ -246,7 +246,7 @@ export const  Editor = () => {
                 return '#6b7280';
             }
           }}
-          className="!bg-white !border-gray-200"
+          className="!bg-black !border-gray-200"
           position="bottom-left"
           pannable
           zoomable
