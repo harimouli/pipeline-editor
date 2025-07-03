@@ -28,14 +28,14 @@ const CustomNode: React.FC<NodeProps<NodeData>> = ({ data, selected }) => {
       ${selected ? 'ring-2 ring-blue-500 ring-offset-2' : ''}
       hover:shadow-xl
     `}>
-      {/* Input Handle */}
+     
       <Handle
         type="target"
         position={Position.Left}
         className="w-3 h-3 !bg-blue-500 border-2 border-white hover:!bg-blue-600 transition-colors"
       />
 
-      {/* Node Content */}
+
       <div className="flex items-center gap-3 min-w-[120px]">
         <IconComponent size={20} />
         <div>

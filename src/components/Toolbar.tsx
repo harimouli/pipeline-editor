@@ -13,29 +13,28 @@ interface NodeTypeButton {
   type: NodeType;
   icon: React.ComponentType<{ size?: number }>;
   label: string;
-  color: string;
 }
 
 const NodeTypeButtons: NodeTypeButton[] = [
-  { type: NodeTypes.INPUT, icon: Upload, label: 'Input', color: 'bg-green-500 hover:bg-green-600' },
-  { type: NodeTypes.PROCESS, icon: Zap, label: 'Process', color: 'bg-blue-500 hover:bg-blue-600' },
-  { type: NodeTypes.TRANSFORM, icon: Database, label: 'Transform', color: 'bg-orange-500 hover:bg-orange-600' },
-  { type: NodeTypes.OUTPUT, icon: Download, label: 'Output', color: 'bg-purple-500 hover:bg-purple-600' }
+  { type: NodeTypes.INPUT, icon: Upload, label: 'Input' },
+  { type: NodeTypes.PROCESS, icon: Zap, label: 'Process' },
+  { type: NodeTypes.TRANSFORM, icon: Database, label: 'Transform' },
+  { type: NodeTypes.OUTPUT, icon: Download, label: 'Output' }
 ];
 
 const Toolbar: React.FC<ToolbarProps> = ({ onAddNode, onAutoLayout, onClearAll, disabled }) => {
   return (
-    <div>
-      <div className="flex flex-wrap gap-2">
-        <div className="flex gap-1">
-          {NodeTypeButtons.map(({ type, icon: Icon, label, color }) => (
+    
+      <div className="flex flex-wrap gap-2 p-6 items-center">
+        <div className="flex gap-4 items-center">
+          {NodeTypeButtons.map(({ type, icon: Icon, label }) => (
             <button
               key={type}
               onClick={() => onAddNode(type)}
               disabled={disabled}
               className={`
-                px-3 py-2 rounded-md text-white font-medium flex items-center gap-2 transition-all
-                ${disabled ? 'bg-gray-400 cursor-not-allowed' : color}
+                px-3 py-2 bg-slate-200 rounded-md text-black font-medium flex items-center gap-2 transition-all
+                ${disabled ? 'cursor-not-allowed bg-slate-200' : ""}
               `}
               title={`Add ${label} Node`}
             >
@@ -45,9 +44,9 @@ const Toolbar: React.FC<ToolbarProps> = ({ onAddNode, onAutoLayout, onClearAll, 
           ))}
         </div>
 
-        <div className="w-px h-8 bg-gray-300" />
+     
 
-        {/* Action Buttons */}
+     
         <button
           onClick={onAutoLayout}
           disabled={disabled}
@@ -80,7 +79,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ onAddNode, onAutoLayout, onClearAll, 
           <span className="hidden sm:inline">Clear</span>
         </button>
       </div>
-    </div>
+
   );
 };
 

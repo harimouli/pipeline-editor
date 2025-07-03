@@ -65,3 +65,11 @@ export const createNode = (
   },
   deletable: true
 });
+
+export interface ConnectParams {
+    source: string | null;
+    target: string | null;
+    sourceHandle?: string | null;
+    targetHandle?: string | null;
+  }
+
