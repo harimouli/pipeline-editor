@@ -1,69 +1,88 @@
-# React + TypeScript + Vite
+Here's the **complete and polished README** for your project, including your nickname `MouliTheMachine`, your email, and all the essential details:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# 🧠 Pipeline Editor
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A **visual DAG (Directed Acyclic Graph) editor** built using **React**, **TypeScript**, and **React Flow**. Create and manage complex workflows with intuitive drag-and-drop functionality.
 
-## Expanding the ESLint configuration
+🔗 [Live Demo](https://pipeline-editor-rust.vercel.app/)
+📦 [GitHub Repo](https://github.com/harimouli/pipeline-editor.git)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+* ✅ **Add Custom Nodes** (Input, Process, Transform, Output)
+* 🔗 **Connect Nodes** visually with smooth edges
+* 🧠 **DAG Validation** (no cycles, self-loops, or unconnected nodes)
+* 🧼 **Clear All** with confirmation
+* ⚙️ **Auto Layout** using `dagre`
+* ⌨️ Keyboard support (`Delete`/`Backspace` for selected elements)
+* 📊 **Real-time Stats View**
+* 🧾 **JSON Preview & Copy** DAG structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📸 Preview
+
+> *(Add your screenshot here or remove this section)*
+> Example:
+> ![Screenshot](https://your-screenshot-link.com)
+
+---
+
+## 🛠️ Tech Stack
+
+* ⚛️ **React** + **TypeScript**
+* 🧭 **React Flow** – for visual node graphs
+* 🎯 **Dagre.js** – for layouting DAG nodes
+* 🎨 **Tailwind CSS** – clean UI styling
+* 🔧 **Lucide Icons** – minimal icon set
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+├── components/        # CustomNode, Toolbar, StatsView, etc.
+├── utills/            # DAG validation, autoLayout, initial data
+├── types/             # Shared types and enums
+├── Editor.tsx         # Main DAG editor view
+├── App.tsx            # App entry
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧪 Getting Started
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# 1. Clone the repo
+git clone https://github.com/harimouli/pipeline-editor.git
+
+# 2. Navigate into the project
+cd pipeline-editor
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
+npm run dev
 ```
+
+Then visit **[http://localhost:5173](http://localhost:5173)** to explore the editor.
+
+---
+
+## ✨ About the Creator
+
+Made with 💻 by **Hari Mouli Muthyala** aka **MouliTheMachine**
+📧 Email: [harimoulimuthyala@gmail.com](mailto:harimoulimuthyala@gmail.com)
+🔗 GitHub: [@harimouli](https://github.com/harimouli)
+
+---
+
+## 📄 License
+
+Licensed under the [MIT License](LICENSE)
