@@ -1,28 +1,11 @@
-import React from 'react';
-import { RotateCcw, GitBranch, Download, Upload, Zap, Database } from 'lucide-react';
-import { NodeTypes, type NodeType } from '../types';
 
-interface ToolbarProps {
-  onAddNode: (type: NodeType) => void;
-  onAutoLayout: () => void;
-  onClearAll: () => void;
-  disabled: boolean;
-}
+import { RotateCcw, GitBranch } from 'lucide-react';
 
-interface NodeTypeButton {
-  type: NodeType;
-  icon: React.ComponentType<{ size?: number }>;
-  label: string;
-}
+import { NodeTypeButtons,type  ToolbarProps } from '../utills/nodeButtons';
 
-const NodeTypeButtons: NodeTypeButton[] = [
-  { type: NodeTypes.INPUT, icon: Upload, label: 'Input' },
-  { type: NodeTypes.PROCESS, icon: Zap, label: 'Process' },
-  { type: NodeTypes.TRANSFORM, icon: Database, label: 'Transform' },
-  { type: NodeTypes.OUTPUT, icon: Download, label: 'Output' }
-];
 
-const Toolbar: React.FC<ToolbarProps> = ({ onAddNode, onAutoLayout, onClearAll, disabled }) => {
+
+export const Toolbar = () => ({ onAddNode, onAutoLayout, onClearAll, disabled }: ToolbarProps) => {
   return (
     
       <div className="flex flex-wrap gap-2 p-6 items-center">
@@ -83,4 +66,3 @@ const Toolbar: React.FC<ToolbarProps> = ({ onAddNode, onAutoLayout, onClearAll, 
   );
 };
 
-export default Toolbar;

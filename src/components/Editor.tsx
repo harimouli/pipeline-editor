@@ -14,7 +14,7 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import type {  NodeData } from '../types';  
 import CustomNode from '../components/CustomNode';
-import Toolbar from '../components/Toolbar';
+import {Toolbar} from '../components/Toolbar';
 import  { createNode, NodeTypes, type ConnectParams } from '../types';
 import { validateDAG} from '../utills/dagValidation';
 import { getLayoutedElements } from '../utills/autoLayout';
@@ -43,6 +43,11 @@ export const  Editor = () => {
   const { fitView } = useReactFlow();
 
   
+  const deleteNode = useCallback((nodeId: string) => {
+    setNodes((nds) => nds.filter((node) => node.id !== nodeId));
+    setEdges((eds) => eds.filter((edge) => edge.source !== nodeId && edge.target !== nodeId));
+  }, [setNodes, setEdges]);
+
   useEffect(() => {
     setNodes((nds) => nds.map(node => ({
       ...node,
@@ -51,7 +56,7 @@ export const  Editor = () => {
         onDelete: () => deleteNode(node.id)
       }
     })));
-  }, []);
+  }, [setNodes, deleteNode]);
 
 
   useEffect(() => {
@@ -81,17 +86,25 @@ export const  Editor = () => {
         return;
       }
 
-      setEdges((eds) =>
-        addEdge(
-          params,
-          eds,
-          {
+      setEdges((eds) => {
+        const safeParams = {
+          ...params,
+          sourceHandle: params.sourceHandle ?? null,
+          targetHandle: params.targetHandle ?? null,
+        };
+        const newEdges = addEdge(safeParams, eds);
+
+        if (newEdges.length > eds.length) {
+          const lastEdge = newEdges[newEdges.length - 1];
+          newEdges[newEdges.length - 1] = {
+            ...lastEdge,
             type: 'smoothstep',
             animated: true,
             style: { stroke: '#6366f1', strokeWidth: 2 },
-          }
-        )
-      );
+          };
+        }
+        return newEdges;
+      });
     },
     [setEdges]
   );
@@ -124,11 +137,7 @@ export const  Editor = () => {
     setNodeCounter((prev) => prev + 1);
   };
 
-  const deleteNode = (nodeId) => {
-    setNodes((nodes) => nds.filter((node) => node.id !== nodeId));
-    setEdges((edges) => eds.filter((edge) => edge.source !== nodeId && edge.target !== nodeId));
-  };
-
+ 
   const handleAutoLayout = () => {
     if (nodes.length === 0) return;
     
